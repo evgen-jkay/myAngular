@@ -1,25 +1,26 @@
 <h2>Products</h2>
 
-<div *ngFor="let product of products">
+<div class="row">
+  <div *ngFor="let product of products" class="col-sm">
 
-  <h3>
-    <a [title]="product.name + ' детальнее'">
-      {{ product.name }}
-    </a>
-  </h3>
+    <h3>
+      <a [title]="product.name + ' детальнее'" [routerLink]="['/products', product.id]">
+        {{ product.name }}
+      </a>
+    </h3>
 
-  <!-- ... -->
+    <img [src]="product.img" class="card-img-top">
 
-  <p *ngIf="product.description">
-    <b>Описание:</b> {{ product.description }}
-  </p>
+    <p *ngIf="product.description">
+      <b>Описание:</b> {{ product.description }}
+    </p>
 
-  <button (click)="share()">
-    Поделиться
-  </button>
+    <button (click)="share()">
+      Поделиться
+    </button>
 
-  <app-product-alerts [product]="product"
-  (notify)="onNotify()">
-  </app-product-alerts>
-
+    <app-product-alerts [product]="product"
+    (notify)="onNotify()">
+    </app-product-alerts>
+  </div>
 </div>
